@@ -91,14 +91,6 @@
             font-weight: 300;
         }
 
-        .main-container {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
         .filter-container {
             width: 100%;
             max-width: 1200px;
@@ -147,6 +139,127 @@
             transform: translateY(-2px);
         }
 
+        .form-container {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+            display: none;
+        }
+
+        .form-container.show {
+            display: block;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .wfh-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--darker);
+            font-size: 0.9rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background-color: var(--lighter);
+            color: var(--dark);
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .submit-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #3b82f6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
         .requests-container {
             background: linear-gradient(rgb(255, 255, 255),rgb(244, 251, 255));
             border-radius: var(--border-radius-xl);
@@ -164,6 +277,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            justify-content: center;
+            background: linear-gradient(rgb(133, 169, 255),rgb(254, 218, 255));
+            color: rgb(6, 18, 97);
+            border-radius: 12px;
+            padding: 0.5rem;
         }
 
         .request-item {
@@ -230,141 +348,151 @@
         }
 
         .calendar-container {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: var(--border-radius-xl);
-            padding: .9rem;
+            width: 100%;
+            background: linear-gradient(rgb(94, 94, 249), rgb(146, 146, 255));
+            border-radius: var(--border-radius-lg);
             box-shadow: var(--card-shadow);
-            height: 55vh; /* Reduced from 80vh */
-            overflow-y: auto;
-            color: white;
+            padding: 1.25rem;
+            border: 1px solid var(--gray-light);
+            height: 60vh;
         }
 
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-title {
-            font-size: 1.25rem;
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
+            margin-bottom: 0.9375rem;
         }
 
         .calendar-nav {
             display: flex;
-            gap: 0.2rem;
+            align-items: center;
+            gap: 0.625rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
         }
 
         .calendar-nav button {
-            background: rgba(255, 255, 255, 0.2);
+            background: none;
             border: none;
-            border-radius: var(--border-radius);
-            width: 1rem;
-            height: 1rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #ffffff;
+            padding: 0.3125rem;
+            border-radius: 50%;
+            width: 1.875rem;
+            height: 1.875rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             transition: var(--transition);
-            color: white;
-            margin-top: 0.2rem;
         }
 
         .calendar-nav button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(99, 102, 241, 0.1);
         }
 
         .calendar-month {
-            font-size: 1rem;
             font-weight: 600;
-          
+            min-width: 7.5rem;
             text-align: center;
+            color: #ffffff;
+            font-size: 1.3rem;
         }
 
-        .calendar-grid {
+        .calendar {
+            width: 100%;
+            height: auto;
+            background: linear-gradient(rgba(194, 194, 255, 0.527), rgb(241, 168, 255));
+            border-radius: 0.625rem;
+            padding: 0.625rem;
+            box-sizing: border-box;
+        }
+
+        .calendar .header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.625rem;
+            color: #000000;
+            padding-bottom: 0.625rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calendar .header span {
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #000000;
+        }
+
+        .calendar .days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 0.3rem;
+            gap: 0.5rem;
         }
 
-        .calendar-day-header {
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-left: 0px;
-            color: rgba(28, 255, 255, 0.8);
-            padding: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
+        .calendar .day {
             display: flex;
-            align-items: center;
             justify-content: center;
-            border-radius: var(--border-radius);
+            align-items: center;
+            height: 2.1875rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             transition: var(--transition);
+            font-weight: 500;
+            color: #000000;
             position: relative;
-            height: 28px;
-            margin-left: 22px;
-            width: 27px;
-            font-weight: 100;
-            border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
 
-        .calendar-day:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+        .calendar .day:hover {
+            background: #f1f1f1;
         }
 
-        .calendar-day.today {
-            background: var(--success);
-            color: white;
+        .calendar .day.wfh {
+            background-color: var(--success);
+            color: #fff;
+        }
+
+        .calendar .day.holiday {
+            background-color: var(--warning);
+            color: #fff;
+        }
+
+        .calendar .day.today {
+            background-color: var(--primary);
+            color: #fff;
             font-weight: 600;
         }
 
-        .calendar-day.selected {
-            background: var(--primary-dark);
-            color: white;
-            font-weight: 600;
+        .calendar .day.other-month {
+            color: transparent;
         }
 
-        .calendar-day.wfh {
-            background: rgba(16, 185, 129, 0.3);
-            color: white;
-            font-weight: 600;
-            border: 1px dashed var(--success);
-        }
-
-        .calendar-day.wfh::after {
-            content: '\f015';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
+        .calendar .day[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
             position: absolute;
-            bottom: 5px;
-            right: 5px;
-            font-size: 0.7rem;
-            color: var(--success);
-        }
-
-        .calendar-day.disabled {
-            color: rgba(255, 255, 255, 0.5);
+            top: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--darker);
+            color: #fff;
+            padding: 0.3125rem 0.625rem;
+            border-radius: 0.3125rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 10;
             pointer-events: none;
-            background: rgba(255, 255, 255, 0.05);
         }
 
         .summary-container {
             background: linear-gradient(rgb(210, 255, 210),rgb(219, 255, 252));
-            border-radius:30px;
+            border-radius: var(--border-radius-lg);
             padding: 1.5rem;
             box-shadow: var(--card-shadow);
-            height: 40vh; /* Adjusted from 30vh to maintain layout balance */
+            height: 35vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -395,10 +523,6 @@
         .summary-item i {
             font-size: 1.5rem;
             color: navy;
-        }
-
-        .no-data img {
-            max-width: 100px;
         }
 
         .modal {
@@ -444,105 +568,30 @@
             color: var(--error);
         }
 
-        .form-container {
+        .detail-modal-content {
+            padding: 2rem;
             max-height: 80vh;
             overflow-y: auto;
         }
 
-        .form-title {
+        .detail-modal-content h2 {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--gray-light);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--darker);
-            font-size: 0.9rem;
-        }
-
-        input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--gray-light);
-            border-radius: var(--border-radius);
-            font-family: 'Inter', sans-serif;
+        .detail-modal-content p {
             font-size: 0.95rem;
-            transition: var(--transition);
-            background-color: var(--lighter);
-            color: var(--dark);
-        }
-textarea {
-     width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--gray-light);
-            border-radius: var(--border-radius);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            background-color: var(--lighter);
-            color: var(--dark);
-            resize: none;
-            height: 120px;
-        }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-      
-
-        .error-message {
-            color: var(--error);
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-
-        .btn {
-            display: inline-flex;
+            margin-bottom: 0.75rem;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 1rem;
             gap: 0.5rem;
+            color: var(--dark);
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), #3b82f6);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+        .detail-modal-content p i {
+            color: var(--gray);
         }
 
         .confirmation-animation {
@@ -618,32 +667,6 @@ textarea {
             transform: translateY(-2px);
         }
 
-        .detail-modal-content {
-            padding: 2rem;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .detail-modal-content h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .detail-modal-content p {
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--dark);
-        }
-
-        .detail-modal-content p i {
-            color: var(--gray);
-        }
-
         @media (max-width: 1024px) {
             .main-container {
                 grid-template-columns: 1fr;
@@ -677,6 +700,14 @@ textarea {
                 width: 100%;
             }
 
+            .wfh-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
             .request-item {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
@@ -684,6 +715,32 @@ textarea {
 
             .calendar-container {
                 height: 40vh;
+            }
+
+            .calendar .day {
+                height: 1.875rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .calendar-header {
+                flex-direction: column;
+                gap: 0.625rem;
+                align-items: flex-start;
+            }
+
+            .calendar-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .calendar-month {
+                min-width: auto;
             }
         }
 
@@ -765,94 +822,102 @@ textarea {
         </div>
     </div>
 
+    <div class="form-container" id="wfhFormContainer">
+        <h2 class="form-title"><i class="fas fa-laptop-house"></i> WFH Request Form</h2>
+        <form id="wfhForm" class="wfh-form">
+            <div class="form-group">
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" placeholder="Employee Name" required minlength="3" maxlength="50"
+                       pattern="^[A-Za-z]+(?:\\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\\.[A-Za-z]+){0,3}$"
+                       title="Name cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+                <p class="error-message" id="employeeNameError">Invalid name format</p>
+            </div>
+            <div class="form-group">
+                <label for="employeeID">Employee ID</label>
+                <input type="text" id="employeeID" placeholder="ATS0xxx" required minlength="7" maxlength="7"
+                       pattern="^[ATS]{3}(?!0000)[0-9]{4}$"
+                       title="Please enter a valid Employee ID (ATS followed by 4 digits, not all zeros)">
+                <p class="error-message" id="employeeIDError">Invalid ID format</p>
+            </div>
+            <div class="form-group">
+                <label for="employeeEmail">Email</label>
+                <input type="email" id="employeeEmail" placeholder="Employee Mail ID" required minlength="8" maxlength="50"
+                       pattern="^[a-zA-Z][a-zA-Z0-9._-]*@(?:gmail\\.com|outlook\\.com|[\\w-]+\\.(?:co|in|org))$"
+                       title="Email must start with a letter, contain at least 3 alphabets, and have a domain of gmail.com, outlook.com, or *.co/in/org">
+                <p class="error-message" id="employeeEmailError">Email must start with a letter, contain at least 3 alphabets, and have a domain of gmail.com, outlook.com, or *.co/in/org</p>
+            </div>
+            <div class="form-group">
+                <label for="workingProject">Project</label>
+                <input type="text" id="workingProject" placeholder="Project Name" required minlength="3" maxlength="50"
+                       pattern="^[A-Za-z]+(?:\\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\\.[A-Za-z]+){0,3}$"
+                       title="Project name cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+                <p class="error-message" id="workingProjectError">Invalid project name</p>
+            </div>
+            <div class="form-group">
+                <label for="reportingManager">Manager</label>
+                <input type="text" id="reportingManager" placeholder="Manager Name" required minlength="3" maxlength="50"
+                       pattern="^[A-Za-z]+(?:\\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\\.[A-Za-z]+){0,3}$"
+                       title="Manager name cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+                <p class="error-message" id="reportingManagerError">Invalid manager name</p>
+            </div>
+            <div class="form-group">
+                <label for="wfhLocation">Location</label>
+                <input type="text" id="wfhLocation" placeholder="Location" required minlength="3" maxlength="50"
+                       pattern="^[A-Za-z]+(?:\\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\\.[A-Za-z]+){0,3}$"
+                       title="Location cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+                <p class="error-message" id="wfhLocationError">Invalid location</p>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date</label>
+                <input type="date" id="fromDate" required>
+                <p class="error-message" id="fromDateError">From date must be today or within one year</p>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date</label>
+                <input type="date" id="toDate" required>
+                <p class="error-message" id="toDateError">To date must be after from date and within 60 days</p>
+            </div>
+            <div class="form-group full-width">
+                <label for="reason">Reason</label>
+                <textarea id="reason" placeholder="Briefly explain your reason for WFH..." required minlength="5" maxlength="100"></textarea>
+                <p class="error-message" id="reasonError">Reason must be between 5 and 100 characters, start with a letter, and contain no invalid consecutive characters</p>
+            </div>
+            <div class="submit-container">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Request</button>
+            </div>
+        </form>
+    </div>
+
     <div class="main-container fade-in">
         <div class="requests-container">
-            <h2 style="display: flex; justify-content: center; background:linear-gradient(rgb(133, 169, 255),rgb(254, 218, 255)); color: rgb(6, 18, 97); border-radius: 12px; padding: auto;"><i class="fas fa-list"></i> My Requests</h2>
+            <h2><i class="fas fa-list"></i> My Requests</h2>
             <div id="requestsList"></div>
         </div>
         <div class="right-container">
             <div class="calendar-container">
                 <div class="calendar-header">
-                  
-                     <div class="calendarr" style="display: flex; margin-left: auto; margin-right: auto; justify-content: center; gap: 20px;" >
-                <div id="currentMonthYear" class="calendar-month"></div><div class="calendar-nav">
+                    <div class="calendar-nav">
                         <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <div class="calendar-month" id="currentMonthYear"></div>
                         <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    </div>
                 </div>
-               
-                <div class="calendar-grid" id="calendarDaysHeader"></div>
-                <div class="calendar-grid" id="calendarDays"></div>
+                <div class="calendar">
+                    <div class="header">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+                    <div class="days" id="calendarDays"></div>
+                </div>
             </div>
             <div class="summary-container">
                 <h2><i class="fas fa-chart-pie"></i> WFH Summary</h2>
                 <div id="wfhSummary"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="wfhFormModal">
-        <div class="modal-content">
-            <i class="fas fa-times modal-close" id="closeFormModal"></i>
-            <div class="form-container">
-                <h2 class="form-title"><i class="fas fa-laptop-house"></i> WFH Request Form</h2>
-                <form id="wfhForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="employeeName">Employee Name</label>
-                            <input type="text" id="employeeName" placeholder="Employee Name" required>
-                            <p class="error-message" id="employeeNameError">Invalid name format</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="employeeID">Employee ID</label>
-                            <input type="text" id="employeeID" placeholder="ATS0xxx" required>
-                            <p class="error-message" id="employeeIDError">Invalid ID format</p>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="employeeEmail">Email</label>
-                            <input type="email" id="employeeEmail" placeholder="Employee Mail ID" required>
-                            <p class="error-message" id="employeeEmailError">Only company email domains allowed</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="workingProject">Project</label>
-                            <input type="text" id="workingProject" placeholder="Project Name" required>
-                            <p class="error-message" id="workingProjectError">Invalid project name</p>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="reportingManager">Manager</label>
-                            <input type="text" id="reportingManager" placeholder="Manager Name" required>
-                            <p class="error-message" id="reportingManagerError">Invalid name</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="wfhLocation">Location</label>
-                            <input type="text" id="wfhLocation" placeholder="Location" required>
-                            <p class="error-message" id="wfhLocationError">Invalid location</p>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fromDate">From Date</label>
-                            <input type="date" id="fromDate" required>
-                            <p class="error-message" id="fromDateError">Invalid date</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="toDate">To Date</label>
-                            <input type="date" id="toDate" required>
-                            <p class="error-message" id="toDateError">Invalid date</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="reason">Reason</label>
-                        <textarea id="reason" placeholder="Briefly explain your reason for WFH..." required></textarea>
-                        <p class="error-message" id="reasonError">Reason is required</p>
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Request</button>
-                </form>
             </div>
         </div>
     </div>
@@ -875,21 +940,20 @@ textarea {
 
     <script>
         const BASE_URL = 'http://54.166.206.245:3010';
+        const ANNUAL_WFH_LIMIT = 60;
 
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('wfhForm');
+            const formContainer = document.getElementById('wfhFormContainer');
             const requestsList = document.getElementById('requestsList');
             const wfhSummary = document.getElementById('wfhSummary');
             const confirmationAnimation = document.getElementById('confirmationAnimation');
             const confirmationButton = document.getElementById('confirmationButton');
             const calendarDays = document.getElementById('calendarDays');
-            const calendarDaysHeader = document.getElementById('calendarDaysHeader');
             const currentMonthYear = document.getElementById('currentMonthYear');
             const prevMonthBtn = document.getElementById('prevMonth');
             const nextMonthBtn = document.getElementById('nextMonth');
             const applyWFH = document.getElementById('applyWFH');
-            const wfhFormModal = document.getElementById('wfhFormModal');
-            const closeFormModal = document.getElementById('closeFormModal');
             const detailModal = document.getElementById('detailModal');
             const closeDetailModal = document.getElementById('closeDetailModal');
             const monthFilter = document.getElementById('monthFilter');
@@ -899,38 +963,35 @@ textarea {
             let currentDate = new Date();
             let currentMonth = currentDate.getMonth();
             let currentYear = currentDate.getFullYear();
-            const ANNUAL_WFH_LIMIT = 20; // Example limit
 
             init();
 
             function init() {
                 setupEventListeners();
-                generateCalendarHeader();
-                generateCalendar(currentMonth, currentYear);
                 fetchSubmissions();
                 checkAnimations();
             }
 
             function setupEventListeners() {
+                applyWFH.addEventListener('click', toggleForm);
                 form.addEventListener('submit', handleFormSubmit);
-                applyWFH.addEventListener('click', () => wfhFormModal.classList.add('show'));
-                closeFormModal.addEventListener('click', () => wfhFormModal.classList.remove('show'));
-                closeDetailModal.addEventListener('click', () => detailModal.classList.remove('show'));
                 monthFilter.addEventListener('change', filterRequests);
                 yearFilter.addEventListener('change', filterRequests);
 
                 setupValidation('employeeName', /^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$/, 
-                               'employeeNameError', 'Invalid name format');
+                               'employeeNameError', 'Invalid name format: no leading/trailing spaces, no consecutive spaces, max 8 spaces, max 3 periods');
                 setupValidation('employeeID', /^[ATS]{3}(?!0000)[0-9]{4}$/, 
-                               'employeeIDError', 'Invalid ID format (ABC1234)');
-                setupValidation('employeeEmail', /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|[\w-]+\.(com|in|co|org))$/, 
-                               'employeeEmailError', 'Only company email domains allowed');
+                               'employeeIDError', 'Invalid ID format (ATS followed by 4 digits, not all zeros)');
+                setupValidation('employeeEmail', /^[a-zA-Z][a-zA-Z0-9._-]*@(?:gmail\.com|outlook\.com|[\w-]+\.(?:co|in|org))$/, 
+                               'employeeEmailError', 'Email must start with a letter, contain at least 3 alphabets, and have a domain of gmail.com, outlook.com, or *.co/in/org');
                 setupValidation('workingProject', /^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$/, 
-                               'workingProjectError', 'Invalid project name');
+                               'workingProjectError', 'Invalid project name: no leading/trailing spaces, no consecutive spaces, max 8 spaces, max 3 periods');
                 setupValidation('reportingManager', /^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$/, 
-                               'reportingManagerError', 'Invalid manager name');
+                               'reportingManagerError', 'Invalid manager name: no leading/trailing spaces, no consecutive spaces, max 8 spaces, max 3 periods');
                 setupValidation('wfhLocation', /^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$/, 
-                               'wfhLocationError', 'Invalid location');
+                               'wfhLocationError', 'Invalid location: no leading/trailing spaces, no consecutive spaces, max 8 spaces, max 3 periods');
+                setupValidation('reason', /^[A-Za-z][A-Za-z0-9\s,.]*$/, 
+                               'reasonError', 'Reason must be 5-100 characters, start with a letter, and contain no invalid consecutive characters');
 
                 document.getElementById('fromDate').addEventListener('change', validateDates);
                 document.getElementById('toDate').addEventListener('change', validateDates);
@@ -945,7 +1006,7 @@ textarea {
                         currentMonth = 11;
                         currentYear--;
                     }
-                    generateCalendar(currentMonth, currentYear);
+                    generateCalendar();
                 });
 
                 nextMonthBtn.addEventListener('click', () => {
@@ -954,8 +1015,17 @@ textarea {
                         currentMonth = 0;
                         currentYear++;
                     }
-                    generateCalendar(currentMonth, currentYear);
+                    generateCalendar();
                 });
+
+                closeDetailModal.addEventListener('click', () => detailModal.classList.remove('show'));
+            }
+
+            function toggleForm() {
+                formContainer.classList.toggle('show');
+                applyWFH.querySelector('span')?.remove();
+                const isOpen = formContainer.classList.contains('show');
+                applyWFH.innerHTML = `<i class="fas fa-laptop-house"></i> ${isOpen ? 'Close WFH Form' : 'Apply WFH Request'}`;
             }
 
             function setupValidation(fieldId, pattern, errorId, errorMessage) {
@@ -963,7 +1033,17 @@ textarea {
                 const errorElement = document.getElementById(errorId);
 
                 field.addEventListener('input', () => {
-                    const isValid = pattern.test(field.value.trim());
+                    let isValid = pattern.test(field.value.trim());
+                    if (fieldId === 'employeeEmail') {
+                        const localPart = field.value.trim().split('@')[0];
+                        const alphaCount = (localPart.match(/[a-zA-Z]/g) || []).length;
+                        isValid = isValid && alphaCount >= 3;
+                    }
+                    if (fieldId === 'reason') {
+                        const value = field.value.trim();
+                        const invalidConsecutive = /(,{2,}|\.{2,}|\s{2,}|,\s,|\.\s\.|,\s\.|\.\s,)/;
+                        isValid = isValid && value.length >= 5 && value.length <= 100 && !invalidConsecutive.test(value);
+                    }
                     errorElement.textContent = isValid ? '' : errorMessage;
                     errorElement.style.display = isValid ? 'none' : 'block';
                     field.setCustomValidity(isValid ? '' : errorMessage);
@@ -971,30 +1051,47 @@ textarea {
             }
 
             function validateDates() {
-                const fromDate = new Date(document.getElementById('fromDate').value);
-                const toDate = new Date(document.getElementById('toDate').value);
+                const fromDateInput = document.getElementById('fromDate');
+                const toDateInput = document.getElementById('toDate');
+                const fromDate = new Date(fromDateInput.value);
+                const toDate = new Date(toDateInput.value);
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
+                const oneYearFromToday = new Date(today);
+                oneYearFromToday.setFullYear(today.getFullYear() + 1);
+                const maxRangeMs = 60 * 24 * 60 * 60 * 1000; // 60 days in milliseconds
 
                 const fromError = document.getElementById('fromDateError');
                 const toError = document.getElementById('toDateError');
 
-                if (fromDate && fromDate < today) {
-                    fromError.textContent = 'From date cannot be in the past';
+                // Validate fromDate
+                if (fromDate && (fromDate < today || fromDate > oneYearFromToday)) {
+                    fromError.textContent = 'From date must be today or within one year';
                     fromError.style.display = 'block';
-                    document.getElementById('fromDate').setCustomValidity('Invalid date');
+                    fromDateInput.setCustomValidity('Invalid date');
                 } else {
                     fromError.style.display = 'none';
-                    document.getElementById('fromDate').setCustomValidity('');
+                    fromDateInput.setCustomValidity('');
                 }
 
-                if (toDate && fromDate && toDate <= fromDate) {
-                    toError.textContent = 'To date must be after from date';
-                    toError.style.display = 'block';
-                    document.getElementById('toDate').setCustomValidity('Invalid date');
+                // Validate toDate
+                if (toDate && fromDate) {
+                    const rangeMs = toDate - fromDate;
+                    if (toDate <= fromDate) {
+                        toError.textContent = 'To date must be after from date';
+                        toError.style.display = 'block';
+                        toDateInput.setCustomValidity('Invalid date');
+                    } else if (rangeMs > maxRangeMs) {
+                        toError.textContent = 'Date range cannot exceed 60 days';
+                        toError.style.display = 'block';
+                        toDateInput.setCustomValidity('Invalid date');
+                    } else {
+                        toError.style.display = 'none';
+                        toDateInput.setCustomValidity('');
+                    }
                 } else {
                     toError.style.display = 'none';
-                    document.getElementById('toDate').setCustomValidity('');
+                    toDateInput.setCustomValidity('');
                 }
             }
 
@@ -1002,7 +1099,13 @@ textarea {
                 event.preventDefault();
 
                 if (!form.checkValidity()) {
-                    alert('Please fill out all fields correctly before submitting.');
+                    form.querySelectorAll('.form-group').forEach(group => {
+                        const input = group.querySelector('input, textarea');
+                        const error = group.querySelector('.error-message');
+                        if (input && !input.validity.valid) {
+                            error.style.display = 'block';
+                        }
+                    });
                     return;
                 }
 
@@ -1032,12 +1135,14 @@ textarea {
                     }
 
                     form.reset();
-                    wfhFormModal.classList.remove('show');
+                    toggleForm();
                     showConfirmation();
                     fetchSubmissions();
                 } catch (error) {
                     console.error('Error submitting request:', error);
-                    alert(`Error: ${error.message}`);
+                    const emailError = document.getElementById('employeeEmailError');
+                    emailError.textContent = error.message || 'Error submitting request';
+                    emailError.style.display = 'block';
                 }
             }
 
@@ -1057,18 +1162,18 @@ textarea {
                     allSubmissions = await response.json();
                     filterRequests();
                     displaySummary();
-                    generateCalendar(currentMonth, currentYear);
+                    generateCalendar();
                 } catch (error) {
                     console.error('Error fetching submissions:', error);
                     requestsList.innerHTML = `
                         <div class="no-data">
-                            <img src="https://cdn.pixabay.com/photo/2020/09/27/12/21/empty-5606696_1280.png" alt="No Data">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No Data">
                             <p>Error loading requests</p>
                         </div>
                     `;
                     wfhSummary.innerHTML = `
                         <div class="no-data">
-                            <img src="https://cdn.pixabay.com/photo/2020/09/27/12/21/empty-5606696_1280.png" alt="No Data">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No Data">
                             <p>Error loading summary</p>
                         </div>
                     `;
@@ -1094,7 +1199,7 @@ textarea {
                 if (submissions.length === 0) {
                     requestsList.innerHTML = `
                         <div class="no-data">
-                            <img src="https://cdn.pixabay.com/photo/2020/09/27/12/21/empty-5606696_1280.png" alt="No Data">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No Data">
                             <p>No requests found</p>
                         </div>
                     `;
@@ -1140,93 +1245,109 @@ textarea {
             }
 
             function displaySummary() {
-                const approvedRequests = allSubmissions.filter(sub => sub.status === 'Approved').length;
-                const remaining = ANNUAL_WFH_LIMIT - approvedRequests;
+                const approvedDays = calculateApprovedDays();
+                const remainingDays = ANNUAL_WFH_LIMIT - approvedDays;
                 wfhSummary.innerHTML = `
                     <div class="summary-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>${approvedRequests}/${ANNUAL_WFH_LIMIT} Allocated WFH Requests</span>
+                        <span>${approvedDays}/${ANNUAL_WFH_LIMIT} Approved WFH Days</span>
                     </div>
                     <div class="summary-item">
                         <i class="fas fa-hourglass-half"></i>
-                        <span>${remaining} Remaining WFH Requests</span>
+                        <span>${remainingDays} Remaining WFH Days</span>
                     </div>
                 `;
             }
 
-            function generateCalendarHeader() {
-                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-                calendarDaysHeader.innerHTML = '';
-                days.forEach(day => {
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'calendar-day-header';
-                    dayElement.textContent = day;
-                    calendarDaysHeader.appendChild(dayElement);
+            function calculateApprovedDays() {
+                let totalDays = 0;
+                const approvedRequests = allSubmissions.filter(sub => sub.status === 'Approved');
+                approvedRequests.forEach(sub => {
+                    const start = new Date(sub.from_date);
+                    const end = new Date(sub.to_date);
+                    const days = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
+                    totalDays += days;
                 });
+                return totalDays;
             }
 
-            function generateCalendar(month, year) {
+            function generateCalendar() {
+                const daysContainer = document.getElementById('calendarDays');
                 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                                   'July', 'August', 'September', 'October', 'November', 'December'];
-                currentMonthYear.textContent = `${monthNames[month]} ${year}`;
+                currentMonthYear.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                const prevMonthDays = new Date(year, month, 0).getDate();
+                const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+                const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                const lastDayOfMonth = new Date(currentYear, currentMonth, daysInMonth).getDay();
+                const daysInLastMonth = new Date(currentYear, currentMonth, 0).getDate();
 
-                calendarDays.innerHTML = '';
+                daysContainer.innerHTML = '';
 
-                for (let i = firstDay - 1; i >= 0; i--) {
+                // Add days from previous month
+                for (let i = firstDayOfMonth; i > 0; i--) {
                     const dayElement = document.createElement('div');
-                    dayElement.className = 'calendar-day disabled';
-                    dayElement.textContent = prevMonthDays - i;
-                    calendarDays.appendChild(dayElement);
+                    dayElement.className = 'day other-month';
+                    dayElement.textContent = daysInLastMonth - i + 1;
+                    daysContainer.appendChild(dayElement);
                 }
 
+                // Add days of current month
                 const today = new Date();
-                const currentDate = today.getDate();
-                const currentMonth = today.getMonth();
-                const currentYear = today.getFullYear();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'day';
+                    dayElement.textContent = day;
 
-                const approvedDates = allSubmissions
-                    .filter(sub => sub.status === 'Approved')
-                    .flatMap(sub => {
-                        const start = new Date(sub.from_date);
-                        const end = new Date(sub.to_date);
-                        const dates = [];
-                        for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-                            dates.push(new Date(d).toISOString().split('T')[0]);
-                        }
-                        return dates;
+                    // Check if this day is today
+                    if (day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                        dayElement.classList.add('today');
+                        dayElement.setAttribute('data-tooltip', 'Today');
+                    }
+
+                    // Check if this day is a holiday
+                    const monthHolidays = holidays[currentMonth + 1];
+                    if (monthHolidays && monthHolidays[day]) {
+                        dayElement.classList.add('holiday');
+                        dayElement.setAttribute('data-tooltip', monthHolidays[day]);
+                    }
+
+                    // Check if this day has an approved WFH request
+                    const wfhOnThisDay = allSubmissions.find(sub => {
+                        const leaveDate = new Date(sub.from_date);
+                        const leaveEndDate = new Date(sub.to_date);
+                        const currentDate = new Date(currentYear, currentMonth, day);
+                        return sub.status === 'Approved' &&
+                               currentDate >= leaveDate &&
+                               currentDate <= leaveEndDate;
                     });
 
-                for (let i = 1; i <= daysInMonth; i++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'calendar-day';
-                    dayElement.textContent = i;
-
-                    if (i === currentDate && month === currentMonth && year === currentYear) {
-                        dayElement.classList.add('today');
-                    }
-
-                    const dateStr = new Date(year, month, i).toISOString().split('T')[0];
-                    if (approvedDates.includes(dateStr)) {
+                    if (wfhOnThisDay) {
                         dayElement.classList.add('wfh');
+                        dayElement.setAttribute('data-tooltip', 'WFH');
                     }
 
-                    calendarDays.appendChild(dayElement);
+                    daysContainer.appendChild(dayElement);
                 }
 
-                const totalCells = 42; // Increased to 42 to ensure 6 rows for consistency
-                const remainingCells = totalCells - (firstDay + daysInMonth);
-
-                for (let i = 1; i <= remainingCells; i++) {
+                // Add days from next month
+                for (let i = 1; i <= (6 - lastDayOfMonth); i++) {
                     const dayElement = document.createElement('div');
-                    dayElement.className = 'calendar-day disabled';
+                    dayElement.className = 'day other-month';
                     dayElement.textContent = i;
-                    calendarDays.appendChild(dayElement);
+                    daysContainer.appendChild(dayElement);
                 }
             }
+
+            const holidays = {
+                1: { 1: "New Year's Day", 15: "Makar Sankranti", 26: "Republic Day" },
+                2: { 26: "Maha Shivaratri" },
+                3: { 14: "Holi" },
+                4: { 6: "Ram Navami", 18: "Good Friday" },
+                8: { 15: "Independence Day", 16: "Krishna Janmashtami", 27: "Ganesh Chaturthi" },
+                10: { 2: "Gandhi Jayanti", 2: "Dussehra", 21: "Diwali" },
+                12: { 25: "Christmas" }
+            };
 
             function checkAnimations() {
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
