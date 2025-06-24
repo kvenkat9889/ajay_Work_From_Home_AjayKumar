@@ -12,21 +12,21 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5450:5432"
+      - "5407:5432"
 
   backend:
     build: ./Backend
     container_name: backend-wfh1
     ports:
-      - "3010:3010"
+      - "3406:3406"
     environment:
-      - PORT=3010
+      - PORT=3406
       - DB_USER=postgres
       - DB_HOST=postgres
       - DB_NAME=new_employee_db
       - DB_PASSWORD=admin123
       - DB_PORT=5432
-      - FRONTEND_URL=http://54.166.206.245:8026
+      - FRONTEND_URL=http://44.223.23.145:8025
     depends_on:
       - postgres
 
@@ -34,13 +34,13 @@ services:
     build: ./Frontend
     container_name: frontend-wfh1
     ports:
-      - "8026:80"
+      - "8025:80"
 
   hr_page:
     build: ./HR_page
     container_name: hrpage-wfh1
     ports:
-      - "8027:80"
+      - "8026:80"
 
 volumes:
   postgres_data:

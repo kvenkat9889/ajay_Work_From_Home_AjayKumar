@@ -28,13 +28,15 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            
             min-height: 100vh;
             color: var(--dark);
+            background-color: #ffffff;
         }
 
         main {
             padding: 1.5rem;
+            max-width: 1800px;
+            margin: 0 auto;
         }
 
         /* Header */
@@ -42,7 +44,7 @@
             position: relative;
             text-align: center;
             height: 120px;
-          background: linear-gradient(rgb(10, 10, 255),rgb(203, 11, 242));
+            background: linear-gradient(rgb(10, 10, 255),rgb(203, 11, 242));
             color: #fff;
             border-radius: 15px;
             overflow: hidden;
@@ -119,7 +121,6 @@
         .search-filter {
             margin-bottom: 1.5rem;
             display: flex;
-            
             flex-direction: column;
             gap: 1rem;
         }
@@ -208,6 +209,7 @@
 
         .stat-card .approved-icon {
             color: var(--success);
+            background-color: white;
         }
 
         .stat-card .rejected-icon {
@@ -228,19 +230,23 @@
         /* Requests Grid */
         .requests-container {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 1.5rem;
         }
 
         /* Request Card */
         .request-card {
-            background:linear-gradient(rgb(249, 249, 255),rgb(255, 255, 255),rgb(255, 247, 255));
+            background: linear-gradient(rgb(249, 249, 255),rgb(255, 255, 255),rgb(255, 247, 255));
             border-radius: 12px;
             transition: var(--transition);
             position: relative;
             border-left: 4px solid transparent;
             padding: 1.25rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+            flex-direction: column;
         }
 
         .request-card.pending {
@@ -271,6 +277,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            min-width: 0;
         }
 
         .avatar {
@@ -284,10 +291,12 @@
             justify-content: center;
             font-weight: 600;
             font-size: 0.875rem;
+            flex-shrink: 0;
         }
 
         .request-details {
             font-size: 0.875rem;
+            min-width: 0;
         }
 
         .request-name {
@@ -296,10 +305,15 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 150px;
         }
 
         .request-id {
             color: var(--gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
         }
 
         .status-badge {
@@ -307,11 +321,12 @@
             border-radius: 999px;
             font-size: 0.75rem;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .status-badge.pending {
-            background-color: rgba(251, 191, 36, 0.1);
-            color: yellow;
+            background-color: rgba(255, 253, 248, 0.1);
+            color: rgb(181, 181, 0);
         }
 
         .status-badge.approved {
@@ -321,13 +336,14 @@
 
         .status-badge.rejected {
             background-color: rgba(248, 113, 113, 0.1);
-            color:red;
+            color: red;
         }
 
         .request-meta {
             margin-top: 0.5rem;
             font-size: 0.875rem;
             color: var(--gray);
+            flex-grow: 1;
         }
 
         .meta-item {
@@ -353,6 +369,7 @@
             background: none;
             border: none;
             cursor: pointer;
+            align-self: flex-start;
         }
 
         .view-btn:hover {
@@ -414,16 +431,18 @@
         }
 
         .modal-content {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 48rem;
+            width: 90%;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.9);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .modal.active .modal-content {
@@ -433,16 +452,19 @@
         .modal-header {
             background: linear-gradient(90deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .modal-title {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 600;
         }
 
@@ -453,6 +475,7 @@
             border: none;
             cursor: pointer;
             transition: transform 0.3s ease;
+            padding: 0.25rem;
         }
 
         .modal-close:hover {
@@ -461,11 +484,12 @@
 
         .modal-body {
             padding: 1.5rem;
+            overflow-y: auto;
         }
 
         .modal-details {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
@@ -477,12 +501,14 @@
             font-size: 0.875rem;
             color: var(--gray);
             margin-bottom: 0.25rem;
+            font-weight: 500;
         }
 
         .detail-group .value {
             font-size: 0.875rem;
             font-weight: 500;
             color: var(--dark);
+            word-break: break-word;
         }
 
         .reason-box {
@@ -503,14 +529,21 @@
         .reason-box p {
             font-size: 0.875rem;
             color: var(--gray);
+            line-height: 1.5;
+            white-space: pre-wrap;
         }
 
         .modal-footer {
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             border-top: 1px solid var(--gray-light);
             display: flex;
             justify-content: flex-end;
             gap: 0.75rem;
+            position: sticky;
+            bottom: 0;
+            background: white;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
         }
 
         .btn {
@@ -521,6 +554,13 @@
             cursor: pointer;
             transition: var(--transition);
             border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn i {
+            font-size: 0.875rem;
         }
 
         .btn-approve {
@@ -562,6 +602,7 @@
             font-size: 0.875rem;
             color: var(--gray);
             margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
         .confirmation-buttons {
@@ -618,22 +659,6 @@
             }
         }
 
-        @media (min-width: 768px) {
-            .requests-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .modal-details {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .requests-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
         @media (max-width: 640px) {
             .filter-container {
                 flex-direction: column;
@@ -642,6 +667,20 @@
             .status-filter {
                 width: 100%;
             }
+
+            .requests-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .requests-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
         }
     </style>
 </head>
@@ -649,14 +688,14 @@
     <!-- Main Content -->
     <main>
         <header>
-        <div class="banner-background">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-        <h1>Work From Home Requests</h1>
-        <p>Track and Manage the Work From Home Request From Here</p>
-    </header>
+            <div class="banner-background">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <h1>Work From Home Requests</h1>
+            <p>Track and Manage the Work From Home Request From Here</p>
+        </header>
 
         <!-- Search and Filters -->
         <div class="search-filter">
@@ -742,7 +781,7 @@
     </div>
 
     <script>
-        const BASE_URL = 'http://54.166.206.245:3010';
+        const BASE_URL = 'http://44.223.23.145:3406';
 
         document.addEventListener('DOMContentLoaded', function() {
             // DOM Elements
@@ -863,7 +902,7 @@
                             <div class="request-info">
                                 <div class="avatar">${request.name.charAt(0)}${request.name.split(' ')[1]?.charAt(0) || ''}</div>
                                 <div class="request-details">
-                                    <div class="request-name">${request.name}</div>
+                                    <div class="request-name" title="${request.name}">${request.name}</div>
                                     <div class="request-id">${request.employee_id}</div>
                                 </div>
                             </div>
@@ -947,15 +986,15 @@
                             </div>
                         </div>
                     `;
-                    document.getElementById('reasonText').textContent = request.reason;
+                    document.getElementById('reasonText').textContent = request.reason || 'No reason provided';
 
                     // Show action buttons only if the request is pending
                     document.getElementById('modalFooter').innerHTML = request.status === 'Pending' ? `
                         <button class="btn btn-approve" data-id="${request.id}">
-                            <i class="fas fa-check mr-1"></i> Approve
+                            <i class="fas fa-check"></i> Approve
                         </button>
                         <button class="btn btn-reject" data-id="${request.id}">
-                            <i class="fas fa-times mr-1"></i> Reject
+                            <i class="fas fa-times"></i> Reject
                         </button>
                     ` : '';
 
@@ -976,10 +1015,12 @@
 
             function openModal() {
                 modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
 
             function closeModal() {
                 modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
 
             function showConfirmationModal(action, requestId) {
@@ -992,13 +1033,18 @@
                 document.getElementById('confirmationTitle').textContent = isApprove ? 'Approve Request' : 'Reject Request';
                 document.getElementById('confirmationMessage').textContent = `Are you sure you want to ${action} this WFH request?`;
                 document.getElementById('confirmAction').className = `btn ${isApprove ? 'btn-confirm-approve' : 'btn-confirm-reject'}`;
+                document.getElementById('confirmAction').innerHTML = isApprove ? 
+                    '<i class="fas fa-check"></i> Approve' : 
+                    '<i class="fas fa-times"></i> Reject';
                 confirmationModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
 
             function closeConfirmationModal() {
                 confirmationModal.classList.remove('active');
                 currentAction = null;
                 currentRequestId = null;
+                document.body.style.overflow = '';
             }
 
             async function handleConfirmAction() {
