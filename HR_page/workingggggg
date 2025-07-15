@@ -829,7 +829,7 @@
     </div>
 
     <script>
-        const BASE_URL = 'http://44.223.23.145:3406';
+        const BASE_URL = 'http://http://44.223.23.145:3406';
 
         document.addEventListener('DOMContentLoaded', function() {
             // DOM Elements

@@ -1005,7 +1005,7 @@
         </div>
     </div>
 <script>
-  const BASE_URL = 'http://44.223.23.145:3406';
+  const BASE_URL = 'http://http://44.223.23.145:3406';
 const ANNUAL_WFH_LIMIT = 60;
 let validationTimeout;
 
@@ -1573,20 +1573,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const toDate = new Date(document.getElementById('toDate').value);
         const daysCount = Math.floor((toDate - fromDate) / (1000 * 60 * 60 * 24)) + 1;
 
-const request = {
-        name: document.getElementById('employeeName').value.trim(),
-        employeeId: document.getElementById('employeeID').value.trim(),
-        email: document.getElementById('employeeEmail').value.trim(),
-        project: document.getElementById('workingProject').value.trim(),
-        manager: document.getElementById('reportingManager').value.trim(),
-        location: document.getElementById('wfhLocation').value.trim(),
-        fromDate: document.getElementById('fromDate').value,
-        toDate: document.getElementById('toDate').value,
-        reason: document.getElementById('reason').value.trim(),
-        status: 'Pending'
-    };
-
-    console.log('Request payload:', request);
+        const request = {
+            name: document.getElementById('employeeName').value.trim(),
+            employeeId: document.getElementById('employeeID').value.trim(),
+            email: document.getElementById('employeeEmail').value.trim(),
+            project: document.getElementById('workingProject').value.trim(),
+            manager: document.getElementById('reportingManager').value.trim(),
+            location: document.getElementById('wfhLocation').value.trim(),
+            fromDate: document.getElementById('fromDate').value,
+            toDate: document.getElementById('toDate').value,
+            reason: document.getElementById('reason').value.trim(),
+            status: 'Pending'
+        };
 
         try {
             const controller = new AbortController();
